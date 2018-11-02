@@ -1,7 +1,8 @@
 
 // set canvas id to variable
 var canvas = document.getElementById("draw");
-
+var rect = canvas.getBoundingClientRect()
+document.getElementById("draw").style.cursor = "crosshair";
 // get canvas 2D context and set it to the correct size
 var ctx = canvas.getContext("2d");
 resize();
@@ -10,8 +11,8 @@ resize();
 function resize() {
   // ctx.canvas.width = window.innerWidth;
   // ctx.canvas.height = window.innerHeight;
-  ctx.canvas.width = 950;
-  ctx.canvas.height = 950;
+  ctx.canvas.width = 800;
+  ctx.canvas.height = 800;
 }
 
 // add event listeners to specify when functions should be triggered
@@ -25,8 +26,8 @@ var pos = { x: 0, y: 0 };
 
 // new position from mouse events
 function setPosition(e) {
-  pos.x = e.clientX;
-  pos.y = e.clientY;
+  pos.x = e.clientX - rect.left;
+  pos.y = e.clientY - rect.top;
 }
 
 function draw(e) {
@@ -40,9 +41,9 @@ function draw(e) {
   ctx.lineCap = "round"; // rounded end cap
   ctx.strokeStyle = color; // hex color of line
 
-  ctx.moveTo(pos.x, pos.y); // from position
+  ctx.moveTo(pos.x, pos.y ); // from position
   setPosition(e);
-  ctx.lineTo(pos.x, pos.y); // to position
+  ctx.lineTo(pos.x , pos.y); // to position
 
   ctx.stroke(); // draw it!
 }
