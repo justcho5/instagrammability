@@ -2,7 +2,7 @@
 // set canvas id to variable
 var canvas = document.getElementById("draw");
 var rect = canvas.getBoundingClientRect()
-document.getElementById("draw").style.cursor = "crosshair";
+canvas.style.cursor = "crosshair";
 // get canvas 2D context and set it to the correct size
 var ctx = canvas.getContext("2d");
 resize();
@@ -17,9 +17,14 @@ function resize() {
 
 // add event listeners to specify when functions should be triggered
 window.addEventListener("resize", resize);
-document.addEventListener("mousemove", draw);
-document.addEventListener("mousedown", setPosition);
-document.addEventListener("mouseenter", setPosition);
+canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("mousedown", setPosition);
+canvas.addEventListener("mouseenter", setPosition);
+
+canvas.addEventListener("touchstart", setPosition);
+canvas.addEventListener("touchmove", draw);
+canvas.addEventListener("touchend", setPosition);
+
 
 // last known position
 var pos = { x: 0, y: 0 };
