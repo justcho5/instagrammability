@@ -480,4 +480,6 @@ function draw(e) {
   ctx.lineTo(pos.x , pos.y); // to position
 
   ctx.stroke(); // draw it!
+
+  e.preventDefault();
 }
