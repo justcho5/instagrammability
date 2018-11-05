@@ -1,4 +1,4 @@
-
+ 
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +32,6 @@
         ctx.fillStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
 
         // Draw a filled circle
-        ctx.beginPath();
         ctx.arc(x, y, size, 0, Math.PI*2, true); 
         ctx.closePath();
         ctx.fill();
@@ -46,11 +45,13 @@
     // Keep track of the mouse button being pressed and draw a dot at current location
     function sketchpad_mouseDown() {
         mouseDown=1;
+
     }
 
     // Keep track of the mouse button being released
     function sketchpad_mouseUp() {
         mouseDown=0;
+        ctx.globalAlpha = 0;
     }
 
     // Keep track of the mouse position and draw a dot if mouse button is currently pressed
@@ -60,12 +61,16 @@
 
         // Draw a dot if the mouse button is currently being pressed
         if (mouseDown==1) {
+                  ctx.beginPath();
+
           ctx.moveTo(mouseX, mouseY );
     // alert(pos.x) // from position
                 getMousePos(e);
 
     ctx.lineTo(mouseX , mouseY);
     ctx.stroke()
+
+    if (ctx.globalAlpha == 0) {ctx.globalAlpha = 1;}
             // drawDot(ctx,mouseX,mouseY,5);
         }
     }
@@ -88,6 +93,7 @@
     // Draw something when a touch start is detected
     function sketchpad_touchStart() {
         // Update the touch co-ordinates
+        ctx.globalAlpha = 1;
         getTouchPos();
 
         drawDot(ctx,touchX,touchY,2);
@@ -99,13 +105,21 @@
     // Draw something and prevent the default scrolling when touch movement is detected
     function sketchpad_touchMove(e) { 
         // Update the touch co-ordinates
-        getTouchPos(e);
 
         // During a touchmove event, unlike a mousemove event, we don't need to check if the touch is engaged, since there will always be contact with the screen by definition.
-        drawDot(ctx,touchX,touchY,2); 
+ctx.beginPath();
 
+          ctx.moveTo(touchX, touchY );
+    // alert(pos.x) // from position
+                getTouchPos(e);
+
+    ctx.lineTo(touchX , touchY);
+    ctx.stroke()
         // Prevent a scrolling action as a result of this touchmove triggering.
         event.preventDefault();
+    }
+    function sketchpad_touchEnd(){
+        ctx.globalAlpha = 0
     }
 
     // Get the touch position relative to the top-left of the canvas
@@ -148,6 +162,7 @@
             // React to touch events on the canvas
             canvas.addEventListener('touchstart', sketchpad_touchStart, false);
             canvas.addEventListener('touchmove', sketchpad_touchMove, false);
+            canvas.addEventListener('touchend', sketchpad_touchEnd, false);
         }
         var background = new Image();
         background.src = "917334_553453028141143_316504515_n.jpg";
@@ -162,6 +177,7 @@
         ctx.lineWidth = 20; // width of line
     ctx.lineCap = "round";
     ctx.strokeStyle = color;
+    ctx.globalAlpha = 0;
 })
     }
     
@@ -185,10 +201,12 @@
     background-color:#def;
     padding:10px;
     border-radius:4px;
+    display:block;
 }
 .rightside {
     float:left;
     margin-left:10px;
+    display:block;
 }
 #sketchpad {
     float:left;
@@ -198,6 +216,7 @@
     max-width:500px;
     border:2px solid #888;
     border-radius:4px;
+
     position:relative; /* Necessary for correct mouse co-ords in Firefox */
 }
 /*#background {
@@ -226,7 +245,7 @@
 
 <body onload="init()">
     <div id="sketchpadapp" class = "row">
-        <div class="leftside">
+        <div class="leftside col-sm-3">
              
              <input type="submit" value="Clear Sketchpad" class = "button" id="clearbutton" onclick="clearCanvas(canvas,ctx);">
              <!-- <input typ="submit" value="Done" id="done" onclick=""> -->
@@ -234,7 +253,7 @@
              <input type = "submit" value = "Outdoor" class = "io" id = "outdoor" onclick = "">
              <input type = "submit" value = "Next" class = "button" id = "done">
         </div>
-        <div class="rightside" style = "position: relative;">
+        <div class="rightside col-sm-8" style = "position: relative;">
             <canvas id="background" height = "500" width = "500" style="position: absolute; left: 0; top: 0; z-index: 0;">
 
             </canvas>
