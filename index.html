@@ -17,6 +17,9 @@
     var touchX,touchY;
 
 
+     // rounded end cap
+    var color = "#cb3594"
+
     
 
     // Draws a dot at a specific position on the supplied canvas name
@@ -43,7 +46,6 @@
     // Keep track of the mouse button being pressed and draw a dot at current location
     function sketchpad_mouseDown() {
         mouseDown=1;
-        drawDot(ctx,mouseX,mouseY,5);
     }
 
     // Keep track of the mouse button being released
@@ -54,11 +56,17 @@
     // Keep track of the mouse position and draw a dot if mouse button is currently pressed
     function sketchpad_mouseMove(e) { 
         // Update the mouse co-ordinates when moved
-        getMousePos(e);
+        
 
         // Draw a dot if the mouse button is currently being pressed
         if (mouseDown==1) {
-            drawDot(ctx,mouseX,mouseY,5);
+          ctx.moveTo(mouseX, mouseY );
+    // alert(pos.x) // from position
+                getMousePos(e);
+
+    ctx.lineTo(mouseX , mouseY);
+    ctx.stroke()
+            // drawDot(ctx,mouseX,mouseY,5);
         }
     }
 
@@ -151,6 +159,9 @@
         document.getElementById('done').addEventListener('click', function(){
         dataURL = canvas.toDataURL("image/png");
         console.log(dataURL);
+        ctx.lineWidth = 20; // width of line
+    ctx.lineCap = "round";
+    ctx.strokeStyle = color;
 })
     }
     
@@ -169,8 +180,8 @@
 }
 .leftside {
     float:left;
-   /* width:170px;
-    height:480px;*/
+    width:170px;
+    height:480px;
     background-color:#def;
     padding:10px;
     border-radius:4px;
@@ -178,23 +189,22 @@
 .rightside {
     float:left;
     margin-left:10px;
-    
 }
 #sketchpad {
     float:left;
-    width: 100%;
-    height:auto;
+    width: 500px;
+    height:500px;
     /*width:500px;*/
     max-width:500px;
     border:2px solid #888;
     border-radius:4px;
     position:relative; /* Necessary for correct mouse co-ords in Firefox */
 }
-#background {
-  width: 100%;
-  height: auto;
+/*#background {
+  width: 500px;
+  height: 100%;
   max-width: 500px;
-}
+}*/
 .button {
     font-size: 15px;
     padding: 5px;
@@ -215,9 +225,8 @@
 </head>
 
 <body onload="init()">
-  <div class ="container">
     <div id="sketchpadapp" class = "row">
-        <div class="leftside col-3">
+        <div class="leftside">
              
              <input type="submit" value="Clear Sketchpad" class = "button" id="clearbutton" onclick="clearCanvas(canvas,ctx);">
              <!-- <input typ="submit" value="Done" id="done" onclick=""> -->
@@ -225,13 +234,12 @@
              <input type = "submit" value = "Outdoor" class = "io" id = "outdoor" onclick = "">
              <input type = "submit" value = "Next" class = "button" id = "done">
         </div>
-        <div class="rightside col-8" style = "position: relative;">
+        <div class="rightside" style = "position: relative;">
             <canvas id="background" height = "500" width = "500" style="position: absolute; left: 0; top: 0; z-index: 0;">
 
             </canvas>
             <canvas id = "sketchpad" height = "500" width = "500" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
         </div>
     </div>
-  </div>
 </body>
 </html>
