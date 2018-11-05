@@ -1,44 +1,10 @@
- <!--  <html lang="en">
-
-  <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
-      <title>
-          Web Paint!
-      </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  </head>
-
-  <input id="hex" placeholder="enter hex color"></input>
-  <canvas id="draw" style= "border: 1px solid; width: 100%; width: 400px; max-width: 800px"></canvas>
-  <script src = "app.js"></script>
- 
-
-
-  </html> -->
-
-<!-- 
-
-  <!DOCTYPE html>
-<html>
-  <head>
-    <title>Create HTML5 Canvas JavaScript Drawing App Example</title>
-  </head>
-  <body>
-    <div id="canvasDiv"></div>
-    [if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript">
-       drawingApp.init();
-  </script>
-  </body>
-</html> -->
 
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Sketchpad</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 <script type="text/javascript">
     // Variables for referencing the canvas and 2dcanvas context
@@ -49,6 +15,9 @@
 
     // Variables to keep track of the touch position
     var touchX,touchY;
+
+
+    
 
     // Draws a dot at a specific position on the supplied canvas name
     // Parameters are: A canvas context, the x position, the y position, the size of the dot
@@ -74,7 +43,7 @@
     // Keep track of the mouse button being pressed and draw a dot at current location
     function sketchpad_mouseDown() {
         mouseDown=1;
-        drawDot(ctx,mouseX,mouseY,12);
+        drawDot(ctx,mouseX,mouseY,5);
     }
 
     // Keep track of the mouse button being released
@@ -89,7 +58,7 @@
 
         // Draw a dot if the mouse button is currently being pressed
         if (mouseDown==1) {
-            drawDot(ctx,mouseX,mouseY,12);
+            drawDot(ctx,mouseX,mouseY,5);
         }
     }
 
@@ -113,7 +82,7 @@
         // Update the touch co-ordinates
         getTouchPos();
 
-        drawDot(ctx,touchX,touchY,12);
+        drawDot(ctx,touchX,touchY,2);
 
         // Prevents an additional mousedown event being triggered
         event.preventDefault();
@@ -125,7 +94,7 @@
         getTouchPos(e);
 
         // During a touchmove event, unlike a mousemove event, we don't need to check if the touch is engaged, since there will always be contact with the screen by definition.
-        drawDot(ctx,touchX,touchY,12); 
+        drawDot(ctx,touchX,touchY,2); 
 
         // Prevent a scrolling action as a result of this touchmove triggering.
         event.preventDefault();
@@ -153,10 +122,13 @@
     function init() {
         // Get the specific canvas element from the HTML document
         canvas = document.getElementById('sketchpad');
+        bg = document.getElementById('background');
+        
 
         // If the browser supports the canvas tag, get the 2d drawing context for this canvas
         if (canvas.getContext)
             ctx = canvas.getContext('2d');
+            ctxbg = bg.getContext('2d')
 
         // Check that we have a valid context to draw on/with before adding event handlers
         if (ctx) {
@@ -169,7 +141,19 @@
             canvas.addEventListener('touchstart', sketchpad_touchStart, false);
             canvas.addEventListener('touchmove', sketchpad_touchMove, false);
         }
+        var background = new Image();
+        background.src = "917334_553453028141143_316504515_n.jpg";
+
+// Make sure the image is loaded first otherwise nothing will draw.
+        background.onload = function(){
+        ctxbg.drawImage(background,0,0, width = "500", height = "500");   
+        }
+        document.getElementById('done').addEventListener('click', function(){
+        dataURL = canvas.toDataURL("image/png");
+        console.log(dataURL);
+})
     }
+    
 </script>
 
 <style>
@@ -185,8 +169,8 @@
 }
 .leftside {
     float:left;
-    width:220px;
-    height:285px;
+   /* width:170px;
+    height:480px;*/
     background-color:#def;
     padding:10px;
     border-radius:4px;
@@ -194,37 +178,60 @@
 .rightside {
     float:left;
     margin-left:10px;
+    
 }
 #sketchpad {
     float:left;
-    height:300px;
-    width:400px;
+    width: 100%;
+    height:auto;
+    /*width:500px;*/
+    max-width:500px;
     border:2px solid #888;
     border-radius:4px;
     position:relative; /* Necessary for correct mouse co-ords in Firefox */
 }
-#clearbutton {
+#background {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+}
+.button {
     font-size: 15px;
-    padding: 10px;
+    padding: 5px;
+    margin: 5px;
     -webkit-appearance: none;
     background: #eee;
     border: 1px solid #888;
+    display: block;
 }
+.io {font-size: 15px;
+    padding: 5px;
+    margin: 5px;
+    -webkit-appearance: none;
+    background: #eee;
+    border: 1px solid #888;
+    display: inline-block;}
 </style>
 </head>
 
 <body onload="init()">
-    <div id="sketchpadapp">
-        <div class="leftside">
-             Touchscreen and mouse support HTML5 canvas sketchpad.<br/><br/>
-             Draw something by tapping or dragging.<br/><br/>
-             Works on iOS, Android and desktop/laptop touchscreens using Chrome/Firefox/Safari.<br/><br/>
-             <input type="submit" value="Clear Sketchpad" id="clearbutton" onclick="clearCanvas(canvas,ctx);">
+  <div class ="container">
+    <div id="sketchpadapp" class = "row">
+        <div class="leftside col-3">
+             
+             <input type="submit" value="Clear Sketchpad" class = "button" id="clearbutton" onclick="clearCanvas(canvas,ctx);">
+             <!-- <input typ="submit" value="Done" id="done" onclick=""> -->
+             <input type="submit" value="Indoor" class = "io" id = "indoor" onclick = "">
+             <input type = "submit" value = "Outdoor" class = "io" id = "outdoor" onclick = "">
+             <input type = "submit" value = "Next" class = "button" id = "done">
         </div>
-        <div class="rightside">
-            <canvas id="sketchpad" height="300" width="400">
+        <div class="rightside col-8" style = "position: relative;">
+            <canvas id="background" height = "500" width = "500" style="position: absolute; left: 0; top: 0; z-index: 0;">
+
             </canvas>
+            <canvas id = "sketchpad" height = "500" width = "500" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
         </div>
     </div>
+  </div>
 </body>
 </html>

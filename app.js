@@ -8,6 +8,8 @@
   var context = canvas.getContext("2d");
   resize();
 
+
+  
   // resize canvas when window is resized
   function resize() {
     // context.canvas.width = window.innerWidth;
