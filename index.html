@@ -1,4 +1,4 @@
- 
+
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -145,7 +145,8 @@ ctx.beginPath();
         // Get the specific canvas element from the HTML document
         canvas = document.getElementById('sketchpad');
         bg = document.getElementById('background');
-        
+        canvas.style.cursor = "crosshair";
+
 
         // If the browser supports the canvas tag, get the 2d drawing context for this canvas
         if (canvas.getContext)
@@ -193,21 +194,19 @@ ctx.beginPath();
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    margin:auto;
+    max-width: 500px;
 }
-.leftside {
-    float:left;
-    width:170px;
-    height:480px;
+.bottom {
     background-color:#def;
     padding:10px;
     border-radius:4px;
-    display:block;
+    overflow:auto;
+    position:relative;
 }
-.rightside {
-    float:left;
-    margin-left:10px;
-    display:block;
-}
+.top {
+    /*float:left;*/
+    position:relative;}
 #sketchpad {
     float:left;
     width: 500px;
@@ -231,29 +230,42 @@ ctx.beginPath();
     -webkit-appearance: none;
     background: #eee;
     border: 1px solid #888;
-    display: block;
+}
+#clearbutton {
+    float:left;
 }
 .io {font-size: 15px;
+    
     padding: 5px;
     margin: 5px;
     -webkit-appearance: none;
     background: #eee;
     border: 1px solid #888;
-    display: inline-block;}
+    }
+.classifier {
+    float:right;
+}
+#done {
+    float:right;
+}
 </style>
 </head>
 
 <body onload="init()">
-    <div id="sketchpadapp" class = "row">
-        <div class="leftside col-sm-3">
+    <div id="sketchpadapp">
+        <div class="bottom
+    ">
              
-             <input type="submit" value="Clear Sketchpad" class = "button" id="clearbutton" onclick="clearCanvas(canvas,ctx);">
+             <input type="submit" value="Clear" class = "button" id="clearbutton" onclick="clearCanvas(canvas,ctx);">
              <!-- <input typ="submit" value="Done" id="done" onclick=""> -->
+              <input type = "submit" value = "Next" class = "button" id = "done">
+             <div class = "classifier">
              <input type="submit" value="Indoor" class = "io" id = "indoor" onclick = "">
              <input type = "submit" value = "Outdoor" class = "io" id = "outdoor" onclick = "">
-             <input type = "submit" value = "Next" class = "button" id = "done">
+         </div>
+            
         </div>
-        <div class="rightside col-sm-8" style = "position: relative;">
+         <div class="top">
             <canvas id="background" height = "500" width = "500" style="position: absolute; left: 0; top: 0; z-index: 0;">
 
             </canvas>
