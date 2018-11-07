@@ -77,16 +77,23 @@
 
     // Get the current mouse position relative to the top-left of the canvas
     function getMousePos(e) {
+        scale = ctx.canvas.clientWidth/500;
         if (!e)
             var e = event;
 
         if (e.offsetX) {
-            mouseX = e.offsetX;
-            mouseY = e.offsetY;
+            
+            mouseX = e.offsetX/scale;
+            mouseY = e.offsetY/scale;
+            // mouseX = e.offsetX
+            // mouseY = e.offsetY
+            console.log({mouseX, mouseY})
         }
         else if (e.layerX) {
-            mouseX = e.layerX;
-            mouseY = e.layerY;
+            mouseX = e.layerX/scale;
+            mouseY = e.layerY/scale;
+            console.log("LAyer")
+            console.log({mouseX, mouseY})
         }
      }
 
@@ -112,6 +119,7 @@ ctx.beginPath();
           ctx.moveTo(touchX, touchY );
     // alert(pos.x) // from position
                 getTouchPos(e);
+                
 
     ctx.lineTo(touchX , touchY);
     ctx.stroke()
@@ -127,14 +135,16 @@ ctx.beginPath();
     // but not the position relative to our target div. We'll adjust them using "target.offsetLeft" and
     // "target.offsetTop" to get the correct values in relation to the top left of the canvas.
     function getTouchPos(e) {
+        scale = ctx.canvas.clientWidth/500
         if (!e)
             var e = event;
 
         if(e.touches) {
             if (e.touches.length == 1) { // Only deal with one finger
                 var touch = e.touches[0]; // Get the information for finger #1
-                touchX=touch.pageX-touch.target.offsetLeft;
-                touchY=touch.pageY-touch.target.offsetTop;
+                touchX=(touch.pageX-touch.target.offsetLeft)/scale;
+                touchY=(touch.pageY-touch.target.offsetTop)/scale;
+                
             }
         }
     }
@@ -179,6 +189,7 @@ ctx.beginPath();
     ctx.lineCap = "round";
     ctx.strokeStyle = color;
     ctx.globalAlpha = 0;
+    // ctx.size = 500;
 })
     }
     
