@@ -52,6 +52,7 @@
     function sketchpad_mouseUp() {
         mouseDown=0;
         ctx.globalAlpha = 0;
+        ctx.closePath()
     }
 
     // Keep track of the mouse position and draw a dot if mouse button is currently pressed
@@ -68,6 +69,7 @@
                 getMousePos(e);
 
     ctx.lineTo(mouseX , mouseY);
+    console.log(ctx.lineWidth)
     ctx.stroke()
 
     if (ctx.globalAlpha == 0) {ctx.globalAlpha = 1;}
@@ -87,13 +89,11 @@
             mouseY = e.offsetY/scale;
             // mouseX = e.offsetX
             // mouseY = e.offsetY
-            console.log({mouseX, mouseY})
         }
         else if (e.layerX) {
             mouseX = e.layerX/scale;
             mouseY = e.layerY/scale;
-            console.log("LAyer")
-            console.log({mouseX, mouseY})
+            
         }
      }
 
@@ -103,7 +103,7 @@
         ctx.globalAlpha = 1;
         getTouchPos();
 
-        drawDot(ctx,touchX,touchY,2);
+        // drawDot(ctx,touchX,touchY,2);
 
         // Prevents an additional mousedown event being triggered
         event.preventDefault();
@@ -128,6 +128,7 @@ ctx.beginPath();
     }
     function sketchpad_touchEnd(){
         ctx.globalAlpha = 0
+        ctx.closePath()
     }
 
     // Get the touch position relative to the top-left of the canvas
@@ -185,12 +186,13 @@ ctx.beginPath();
         document.getElementById('done').addEventListener('click', function(){
         dataURL = canvas.toDataURL("image/png");
         console.log(dataURL);
-        ctx.lineWidth = 20; // width of line
+        
+    // ctx.size = 500;
+})
+        ctx.lineWidth = 5; // width of line
     ctx.lineCap = "round";
     ctx.strokeStyle = color;
     ctx.globalAlpha = 0;
-    // ctx.size = 500;
-})
     }
     
 </script>
