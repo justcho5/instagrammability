@@ -106,7 +106,12 @@
         // drawDot(ctx,touchX,touchY,2);
 
         // Prevents an additional mousedown event being triggered
-        event.preventDefault();
+        if (event.touches){
+            if (event.touches.length ==1){
+                event.preventDefault();
+            }
+        }
+        
     }
 
     // Draw something and prevent the default scrolling when touch movement is detected
@@ -147,6 +152,7 @@ ctx.beginPath();
                 touchY=(touch.pageY-touch.target.offsetTop)/scale;
                 
             }
+
         }
     }
 
