@@ -5,9 +5,8 @@
 
 <title>Sketchpad</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+<script type = "text/javascript" src = "js/pinch-zoom.umd.js"></script>
 <script type="text/javascript">
-    // Variables for referencing the canvas and 2dcanvas context
     var canvas,ctx;
 
     // Variables to keep track of the mouse position and left-button status 
@@ -19,9 +18,6 @@
 
      // rounded end cap
     var color = "#cb3594"
-
-    
-
     // Draws a dot at a specific position on the supplied canvas name
     // Parameters are: A canvas context, the x position, the y position, the size of the dot
     function drawDot(ctx,x,y,size) {
@@ -215,8 +211,8 @@ ctx.beginPath();
     user-select: none;
     margin:auto;
     max-width: 500px;
-    margin:10px;
-}
+/*    margin:10px;
+*/}
 .bottom {
     background-color:#def;
     padding:10px;
@@ -271,7 +267,7 @@ ctx.beginPath();
 </head>
 
 <body onload="init()">
-    <div id="sketchpadapp">
+    <div class = "container" id="sketchpadapp">
         
          <div class="top">
             <canvas id="background" height = "500" width = "500" style="position: absolute; left: 0; top: 0; z-index: 0;">
@@ -291,5 +287,10 @@ ctx.beginPath();
             
         </div>
     </div>
+    <script type="text/javascript">
+        var el=document.querySelector('div.container');
+        pz = new PinchZoom.default(el, {})
+        pz.enable() 
+    </script>
 </body>
 </html>
