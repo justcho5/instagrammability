@@ -253,7 +253,14 @@ ctx.beginPath();
 
 <body onload="init()">
     <div id="sketchpadapp">
-        <!-- <div class="bottom
+        
+         <div class="top">
+            <canvas id="background" height = "500" width = "500" style="position: absolute; left: 0; top: 0; z-index: 0;">
+
+            </canvas>
+            <canvas id = "sketchpad" height = "500" width = "500" style="left: 0; top: 0; z-index: 1;"></canvas>
+        </div>
+        <div class="bottom
     ">
              
              <input type="submit" value="Clear" class = "button" id="clearbutton" onclick="clearCanvas(canvas,ctx);">
@@ -263,12 +270,6 @@ ctx.beginPath();
              <input type = "submit" value = "Outdoor" class = "io" id = "outdoor" onclick = "">
          </div>
             
-        </div> -->
-         <div class="top">
-            <canvas id="background" height = "500" width = "500" style="position: absolute; left: 0; top: 0; z-index: 0;">
-
-            </canvas>
-            <canvas id = "sketchpad" height = "500" width = "500" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
         </div>
     </div>
 </body>
