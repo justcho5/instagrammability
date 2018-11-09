@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "instagrammability-ux",
+  "private_key_id": "4cec451b5809901118b1dc5f2ae5342b0f2ec765",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC7E4ENfdPfNLbI\nTWfGv44w+vYD9oqQXa1mNeQrkV3FoBlOSWTWCOajJcHJRPE/Lm2NNuPrJh1J1Kt/\npIBiorRVGEV/nO0aJto5LhY4bwXUzaecAvhjWuumruxTOIxV7yFLWHvxUsFb5NzN\nmtkXhvQdMl3onKSaSqlESMDiD8mjyrRth0TQM2LxED6dyM7kg8Vfa95pPK8Vw1Xz\n6Vbuy2BgqM+bee0wl8Xde65SMAk1jxqZXFvZpDI9T66qbSTLXBaIZOLTB1uvunEF\nTjO2PM94nCAmYNXQowlpIZSmryhZdQkrQeuIAtKe6y8LCPGP+29jA/VBfcRAT8rj\npUS+IoEXAgMBAAECggEAEVKWhh3LIyV58WU9gUlWjNGIO0i2fvS1rDu8Q46D3Ntc\nzIN+S1VqqdvCrHTuU9fkPAnDpBAU8TO4p6qfWsLPKPwE33Kz/9JuLZJHa3VYWGKs\nrQUXY/fUz0vuRSx8zi5E6nmojGmJzw0Lpxw6EvQjoZp62KG8mi7kqpaECcrFdJ2V\nWq27C95MefcQ+pso1ji/WFlpOKea7mmu5FP35aZqtpIdDJPBbBMoUHhZ/UNFrTiA\nuHmulTu6EZz2UU8p0yUBihVEnIHCesjp1kxcaEuP4atOr5nMzhJISQlm3ZIOEiIw\nCGtwZb45V6eGQdzNn3a1wPJfMXPRPrW1at1q7ScEuQKBgQDtbc23qWRK6Z8ADLrb\n39o9uUd/R1FgSEKMOAfzESTxJZt7i0tbJc+96Nwry7o+GzWjc0X79H9Vw9uc2WKZ\nrskXvdqViUNotszGgeEtOigqEnGpcr1GX9UrdRffsx1kn/WbLoC8gWgOdPQjPStv\nWE+gyZtQ2Wx2/vkua8I1qEPCiQKBgQDJtXRWWVpqoyqr0ZIYrGLuLPnNzV3WLH+9\n27xtLwhvpy3+4i/2bbkaLJMWjDp71mcix5NuAnMUpoxEAV1ubxL/gSrfATvRifGr\nIyFQyX3Tusf3uoQChuJlZWGagKkhDROY/Y6swCvmfJGodo+NIdOJQvH4QbiOpBML\n5aNpFZO+nwKBgD0/WBQKxG52uad/oSxbIKdPhlwU/68AtPoK8jIHuCnk86j5E+Vd\naaupyDIcCd0/k6SodeM6/SYYsixR/5d5eTKArURp9lOq5ERI+Nd76yR/QYberGjd\nC9Z8DD6OrARrJyZy5o66Kyefj+MPQockltX5a/F9RPelao5JCf5he6lRAoGAEK9G\nwUHA3eNDS1UZfZr8z/C+dQyQv3+MzXqYmntyejHc9yFkkEDBN+4J+Kp+x/GTNGhH\nxKjFNicUoSdvwAvGCYZ4sluaxBlh+SL9xX31P4dKtS4jb0YTAgohybLsyoQXY+dN\nXvLCbt1M+x9bfnQW2FrGQx/EkV/3B1vmaXHUd8cCgYAh1Jx+eFNmIsjjq7he8B7J\n9VrEXy5MLnb2mb58oVuvG9CjMmVj8s21WyO4N5KIn9HFBBFUsmwT/57JzqCjWxav\n4BnNwcn3tfEpklCAtr74RLyqOSmw+/fgjQ3xvy1J9n6OI+3yHa/B4EP04y+mPigc\n9pOlh2If2/IqvdekTD6mPw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "instagrammability-ux@appspot.gserviceaccount.com",
+  "client_id": "112567526673350609304",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/instagrammability-ux%40appspot.gserviceaccount.com"
+}
