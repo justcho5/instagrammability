@@ -4,7 +4,7 @@ var mouseX,mouseY,mouseDown=0;
 // Variables to keep track of the touch position
 var touchX,touchY;
  // rounded end cap
-var color = "#cb3594"
+var color = "#000000"
 var indoor = 0;
 var dataURL = "";
 // Draws a dot at a specific position on the supplied canvas name
