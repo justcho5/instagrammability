@@ -6,6 +6,7 @@ var touchX,touchY;
  // rounded end cap
 var color = "#000000"
 var indoor = 0;
+var outdoor = 0;
 var dataURL = "";
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position, the size of the dot
@@ -35,7 +36,6 @@ function sketchpad_mouseMove(e) {
 // alert(pos.x) // from position
             getMousePos(e);
 ctx.lineTo(mouseX , mouseY);
-console.log(ctx.lineWidth)
 ctx.stroke();
 if (ctx.globalAlpha === 0) {ctx.globalAlpha = 1;}
         // drawDot(ctx,mouseX,mouseY,5);
@@ -114,11 +114,11 @@ function loadBackground(element) {
     database.collection("images").doc("0").get().then(function (doc) {
         if (doc.exists) {
             var remainingImages = (doc.data().images);
-            console.log(remainingImages);
             if (!(remainingImages.length)) {
                 element.src = "data/done.jpg";
             }
             else {
+                // console.log(remainingImages);
                 element.src = "data/elyseemusee_400/" + remainingImages[0];
 
             }
@@ -131,7 +131,7 @@ function loadBackground(element) {
         console.log("Error", error);
     });}
 
-    function writeInOutUserData(imageId, indoor, outdoor, dataURL) {
+function writeInOutUserData(imageId, indoor, dataURL) {
   database.collection("data").doc(imageId).set({
     indoor: indoor,
       dataURL: dataURL,
@@ -160,7 +160,7 @@ function nextImage(){
         var background = (document.getElementById("background"));
         var matches = (background.src).match(/\d+/g);
         var imageId = matches[matches.length - 1];
-        console.log(imageId);
+
         dataURL = canvas.toDataURL("image/png");
         try {
             writeInOutUserData(imageId, indoor, dataURL);
@@ -172,22 +172,23 @@ function nextImage(){
         }
 
 
-
+        // console.log("check here");
 
         //get the remaining images
-        loadBackground(background);
         indoor = 0;
         outdoor = 0;
-        clearCanvas(canvas, ctx)
+        clearCanvas(canvas, ctx);
 
 
         database.collection("images").doc("0").get().then(function (doc) {
         if (doc.exists) {
             var remainingImages = (doc.data().images);
-            console.log(remainingImages);
             database.collection("images").doc("0").set({
                     images: remainingImages.slice(1)
                 });
+            // console.log(remainingImages.slice(1));
+            loadBackground(background);
+
 
 
         }
@@ -198,9 +199,13 @@ function nextImage(){
         console.log("Error", error);
     });
 
+
     }
 
     document.getElementById("done").style.backgroundColor = "#eee";
+    document.getElementById("indoor").style.backgroundColor = "#eee";
+    document.getElementById("outdoor").style.backgroundColor = "#eee";
+
 }
 
 // Set-up the canvas and add our event handlers after the page has loaded
