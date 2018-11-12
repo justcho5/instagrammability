@@ -162,14 +162,7 @@ function nextImage(){
         var imageId = matches[matches.length - 1];
 
         dataURL = canvas.toDataURL("image/png");
-        try {
-            writeInOutUserData(imageId, indoor, dataURL);
-
-        }
-        catch (err) {
-            writeInOutUserData(imageId, indoor, "");
-
-        }
+        writeInOutUserData(imageId, indoor, dataURL);
 
 
         // console.log("check here");
