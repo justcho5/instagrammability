@@ -157,13 +157,23 @@ function nextImage(){
 // only change pictures when indoor or outdoor is clicked
     if (indoor || outdoor) {
         document.getElementById("done").style.backgroundColor = "gray";
-        dataURL = canvas.toDataURL("image/png");
         var background = (document.getElementById("background"));
-
         var matches = (background.src).match(/\d+/g);
         var imageId = matches[matches.length - 1];
         console.log(imageId);
-        writeInOutUserData(imageId, indoor, dataURL);
+        dataURL = canvas.toDataURL("image/png");
+        try {
+            writeInOutUserData(imageId, indoor, dataURL);
+
+        }
+        catch (err) {
+            writeInOutUserData(imageId, indoor, "");
+
+        }
+
+
+
+
         //get the remaining images
         loadBackground(background);
         indoor = 0;
@@ -190,7 +200,7 @@ function nextImage(){
 
     }
 
-
+    document.getElementById("done").style.backgroundColor = "#eee";
 }
 
 // Set-up the canvas and add our event handlers after the page has loaded
