@@ -6,7 +6,6 @@ var touchX,touchY;
  // rounded end cap
 var color = "#cb3594"
 var indoor = 0;
-var outdoor = 0;
 var dataURL = "";
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position, the size of the dot
@@ -135,7 +134,6 @@ function loadBackground(element) {
     function writeInOutUserData(imageId, indoor, outdoor, dataURL) {
   database.collection("data").doc(imageId).set({
     indoor: indoor,
-    outdoor: outdoor,
       dataURL: dataURL,
   });
 }
@@ -143,11 +141,14 @@ function ioButton(){
       if (event.target.value === "Indoor"){
         indoor = 1;
         outdoor = 0;
-
+        document.getElementById("indoor").style.backgroundColor = "gray";
+        document.getElementById("outdoor").style.backgroundColor = "#eee";
     }
     else {
         indoor = 0;
         outdoor = 1;
+        document.getElementById("outdoor").style.backgroundColor = "gray";
+        document.getElementById("indoor").style.backgroundColor = "#eee";
 
     }
 }
@@ -155,17 +156,19 @@ function ioButton(){
 function nextImage(){
 // only change pictures when indoor or outdoor is clicked
     if (indoor || outdoor) {
+        document.getElementById("done").style.backgroundColor = "gray";
         dataURL = canvas.toDataURL("image/png");
         var background = (document.getElementById("background"));
 
         var matches = (background.src).match(/\d+/g);
         var imageId = matches[matches.length - 1];
         console.log(imageId);
-        writeInOutUserData(imageId, indoor, outdoor, dataURL);
+        writeInOutUserData(imageId, indoor, dataURL);
         //get the remaining images
         loadBackground(background);
         indoor = 0;
         outdoor = 0;
+        clearCanvas(canvas, ctx)
 
 
         database.collection("images").doc("0").get().then(function (doc) {
@@ -184,6 +187,7 @@ function nextImage(){
     }).catch(function (error) {
         console.log("Error", error);
     });
+
     }
 
 

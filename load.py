@@ -20,7 +20,7 @@
 
 # def ridge_regression(y, x):
 #
-
+#
 import os
 import csv
 # print(os.listdir("data/elyseemusee"))
@@ -41,7 +41,7 @@ doc_ref = db.collection(u'images').document(u'0')
 doc_ref.set({
   u'images': images
 })
-
+#
 # def implicit():
 #     from google.cloud import storage
 #
