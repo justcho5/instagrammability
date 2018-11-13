@@ -4,7 +4,7 @@ var mouseX,mouseY,mouseDown=0;
 // Variables to keep track of the touch position
 var touchX,touchY;
  // rounded end cap
-var color = "#000000"
+var color = "#ff0000"
 var indoor = 0;
 var outdoor = 0;
 var dataURL = "";
