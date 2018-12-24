@@ -1,0 +1,110 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "jquery-bar-rating",
+        "scope": null,
+        "escapedName": "jquery-bar-rating",
+        "name": "jquery-bar-rating",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/mike/Documents/instability-flask"
+    ]
+  ],
+  "_from": "jquery-bar-rating@latest",
+  "_id": "jquery-bar-rating@1.2.2",
+  "_inCache": true,
+  "_location": "/jquery-bar-rating",
+  "_nodeVersion": "7.1.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/jquery-bar-rating-1.2.2.tgz_1487507471297_0.6340381233021617"
+  },
+  "_npmUser": {
+    "name": "antennaio",
+    "email": "antenna@antenna.io"
+  },
+  "_npmVersion": "3.10.9",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "jquery-bar-rating",
+    "scope": null,
+    "escapedName": "jquery-bar-rating",
+    "name": "jquery-bar-rating",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/jquery-bar-rating/-/jquery-bar-rating-1.2.2.tgz",
+  "_shasum": "9594d662cff9deb0fe7b372511bb2492a436f392",
+  "_shrinkwrap": null,
+  "_spec": "jquery-bar-rating",
+  "_where": "/Users/mike/Documents/instability-flask",
+  "bugs": {
+    "url": "https://github.com/antennaio/jquery-bar-rating/issues"
+  },
+  "dependencies": {
+    "jquery": ">=1.7.2"
+  },
+  "description": "Minimal, light-weight jQuery ratings.",
+  "devDependencies": {
+    "chai": "3.5.0",
+    "gulp": "3.9.1",
+    "gulp-jshint": "2.0.1",
+    "gulp-less": "3.1.0",
+    "gulp-rename": "1.2.2",
+    "gulp-sourcemaps": "1.5.2",
+    "gulp-uglify": "1.5.3",
+    "jshint": "2.9.2",
+    "karma": "0.13.22",
+    "karma-chai": "0.1.0",
+    "karma-chrome-launcher": "0.2.3",
+    "karma-junit-reporter": "0.4.2",
+    "karma-mocha": "0.2.2",
+    "karma-phantomjs-launcher": "1.0.0",
+    "mocha": "2.5.3",
+    "phantomjs-prebuilt": "2.1.7",
+    "run-sequence": "1.2.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "9594d662cff9deb0fe7b372511bb2492a436f392",
+    "tarball": "https://registry.npmjs.org/jquery-bar-rating/-/jquery-bar-rating-1.2.2.tgz"
+  },
+  "gitHead": "28ecb90762fc7db6bba30171a9f3bb698bb930f3",
+  "homepage": "https://github.com/antennaio/jquery-bar-rating#readme",
+  "keywords": [
+    "jquery",
+    "jquery-plugin",
+    "ratings",
+    "rating"
+  ],
+  "license": "MIT",
+  "main": "jquery.barrating.js",
+  "maintainers": [
+    {
+      "name": "antennaio",
+      "email": "antenna@antenna.io"
+    },
+    {
+      "name": "garygreen",
+      "email": "holegary@gmail.com"
+    }
+  ],
+  "name": "jquery-bar-rating",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/antennaio/jquery-bar-rating.git"
+  },
+  "scripts": {
+    "test": "karma start"
+  },
+  "version": "1.2.2"
+}
